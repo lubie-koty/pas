@@ -1,0 +1,6 @@
+dlugosc przesylu pakietu TCP: 0.00018930000000000335
+dlugosc przesylu pakietu UDP: 0.00032359999999999334
+
+Dla którego z gniazd czas jest krótszy?
+Z czego wynika krótszy czas?
+Jakie są zalety / wady obu rozwiązań?
