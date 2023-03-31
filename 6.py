@@ -8,14 +8,9 @@ PORT = 6666
 print(f'starting up on {IP}:{PORT}')
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
     s.bind((IP, PORT))
-    s.listen()
     
     while True:
-        connection, client_address = s.accept()
-        with connection:
-            print(f'connection from {client_address}')
-            data = connection.recv(1024).decode('utf-8')
-            if data:
-                connection.sendall(f'{socket.gethostbyname(data)}'.encode('utf-8'))
-            else:
-                print(f'no data received from {client_address}')
+        data, client_address = s.recvfrom(1024)
+        print(f'connection from {client_address}')
+        data = data.decode('utf-8')
+        s.sendto(f'{socket.gethostbyname(data)}'.encode('utf-8'), client_address)
