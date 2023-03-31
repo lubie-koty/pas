@@ -25,12 +25,12 @@ dest_ip = read_hex_ip(hex_packet[16:20])
 src_port = read_hex_number(hex_packet[20:22])
 dest_port = read_hex_number(hex_packet[22:24])
 if protocol_type == 6:
-    data = read_hex_text(hex_packet[60:])
+    data = read_hex_text(hex_packet[52:])
 elif protocol_type == 17:
     data = read_hex_text(hex_packet[32:])
 else:
     raise Exception('wrong protocol type')
-    
+
 resultA = f'zad15odpA;ver;{protocol_version};srcip;{src_ip};dstip;{dest_ip};type;{protocol_type}'
 resultB = f'zad15odpB;srcport;{src_port};dstport;{dest_port};data;{data}'
 
