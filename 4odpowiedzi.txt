@@ -1,6 +1,12 @@
 dlugosc przesylu pakietu TCP: 0.00018930000000000335
-dlugosc przesylu pakietu UDP: 0.00032359999999999334
+dlugosc przesylu pakietu UDP: 7.43999999999953e-05
 
-Dla którego z gniazd czas jest krótszy?
-Z czego wynika krótszy czas?
-Jakie są zalety / wady obu rozwiązań?
+* Dla którego z gniazd czas jest krótszy?
+dla gniazda UDP
+* Z czego wynika krótszy czas?
+z faktu, że gniazdo UDP nie przyjmuje potwierdzenia ani nie przesyła utraconych danych
+* Jakie są zalety / wady obu rozwiązań?
+Protokół TCP jest wolniejszy od protokołu UDP, wymaga większej ilości danych w nagłówku i
+wymaga handshake'ów przy przesyłaniu danych, ale za to zapewnia przesłanie w całości informacji.
+UDP sprawdza się lepiej w przypadku, gdy możliwa utrata danych nie będzie przeszkadzała w
+poprawnym odbiorze informacji.
