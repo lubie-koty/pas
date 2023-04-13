@@ -17,9 +17,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
             continue
         
         data = data.split(';')
-        if data[2] == '' and \
-           data[4] == '' and \
-           data[6] == 'siema':
+        if data[2] == '60788' and \
+           data[4] == '2901' and \
+           data[6] == 'programming in python is fun':
             s.sendto(b'TAK', address)
         else:
             s.sendto(b'NIE', address)

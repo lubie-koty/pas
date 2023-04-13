@@ -1,11 +1,16 @@
 import socket
 
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-    s.connect(('212.182.24.27', 2900))
+    s.bind(('212.182.24.27', 2900))
+    s.listen()
+    
     while True:
-        try:
-            s.sendall(b'wiadomosc')
-            print(s.recv(1024).decode('UTF-8'))
-        except KeyboardInterrupt:
-            print('zakonczono program')
-            break
+        connection, client_address = s.accept()
+        with connection:
+            data = connection.recv(1024)
+            data = data.decode('utf-8')
+            if len(data) > 20:
+                connection.sendall(b'za dluga wiadomosc')
+            else:
+                connection.sendall(data.encode('utf-8'))
+        
